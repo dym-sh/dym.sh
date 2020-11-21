@@ -1,19 +1,19 @@
-# dym.sh
+# [dym.sh](https://dym.sh)
 
-> <DESCRIPTION>
+> current homepage
+
+- process: [website-progress](../website-progress)
 
 
-<a href='preview.png'><img height=100 border=2 align='right' alt='preview' src='preview.png'></a>
 ## preview
-- [preview.html](preview.html)
-- https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
+![preview](preview.png)
 
 
 ## mirrors
 - https://github.com/dym-sh/dym.sh
 - https://gitlab.com/dym-sh/dym.sh
-- https://dym.sh/lab/dym.sh
-- hyper://<TBD> /[?](https://beakerbrowser.com)
+- https://dym.sh/dym.sh
+- hyper://5d5f0ee2245ad463284e3e092ba72e68f48826e48bfe7f0b58ea2edaac683a4c /[?](https://beakerbrowser.com)
 
 
 ## license
