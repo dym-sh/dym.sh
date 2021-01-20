@@ -1,0 +1,97 @@
+:root
+  { --text : #ccc
+  ; --bg : #222
+  ; --current : white
+  ; --font-size : 16pt
+  ; --line-height : 1.5rem
+  }
+
+* { all : unset
+  ; word-wrap : break-word
+  ; color : var( --text )
+  ; font-size : var( --font-size )
+  ; line-height : var( --line-height )
+  ; font-family : 'DejaVu Sans Mono'
+                , 'PT Mono'
+                , 'Menlo'
+                , 'Consolas'
+                , 'Monaco'
+                , monospace
+  }
+
+head > *
+, title
+, style
+, script
+, [hidden]
+  { display : none }
+
+a { text-decoration : underline }
+a:link { cursor : pointer }
+a:is( :active, :hover, :focus )
+  { color : var( --current ) }
+
+sub, sup
+  { font-size : 0.66em }
+
+input
+  { border : 1.5pt solid var( --text )
+  ; border-top : none
+  ; border-right : none
+  ; padding : 0 0.5ch
+  }
+input:is( :active, :hover, :focus )
+  { border-color : var( --current ) }
+
+
+input::placeholder
+  { color : lightgray }
+
+
+body
+  { background : var( --bg )
+  ; padding : calc( 2 * var( --line-height ) )
+  ; min-height : calc( 100vh - ( 2 * var( --line-height ) ) )
+  ; display : flex
+  ; flex-direction : column
+  }
+
+nav
+  { display : flex
+  ; flex-direction : row
+  }
+nav > *
+  { margin-right : 2ch
+  ;
+  }
+
+h1::before
+, h2::before
+, blockquote::before
+, q::before
+  { content : '~'
+  ; position : absolute
+  ; margin-left : -2ch
+  }
+h2::before
+  { content : '+' }
+blockquote::before
+  { content : '>' }
+q::before
+  { content : '!' }
+
+section
+  { display : flex
+  ; flex-direction : column /*row*/
+  ; max-width : 100vw
+  ; margin-top : var( --line-height )
+  }
+
+
+/* title on mobile */
+@media( hover: none )
+  { [title]::after
+      { content : '/*' attr(title) '*/'
+      ; display : inline
+      }
+  }

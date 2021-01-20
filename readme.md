@@ -2,8 +2,6 @@
 
 > current homepage
 
-- process: https://dym.sh/website-progress
-
 
 ## preview
 ![preview](./preview.png)
