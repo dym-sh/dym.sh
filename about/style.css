@@ -208,7 +208,7 @@ body
   ; display : grid
   ; grid-template-columns : 12rem 1fr 1fr
   ; grid-template-rows : auto
-  ; gap : calc( 3 * var( --line-height ) ) 3ch
+  ; gap : calc( 3 * var( --line-height ) ) 4ch
   ; grid-template-areas :
     ' title        title-occupation     title-description     '
     ' skills       skills-tech          skills-speaking       '
@@ -240,7 +240,7 @@ section.projects-list
   ; display : grid
   ; grid-template-columns : repeat( 2, 1fr )
   ; grid-template-rows : auto
-  ; gap : var( --line-height ) 3ch
+  ; gap : var( --line-height ) 4ch
   ; grid-template-areas :
     ' p-1  p-3 '
     ' p-2  p-4 '
@@ -259,7 +259,7 @@ section.networks-links
   ; display : grid
   ; grid-template-columns : repeat( 4, 1fr )
   ; grid-template-rows : auto
-  ; gap : 3ch
+  ; gap : 4ch
   ; grid-template-areas :
     ' links-contacts  links-code  links-graphics  links-media '
   }
