@@ -11,7 +11,7 @@
 - https://github.com/dym-sh/dym.sh
 - https://gitlab.com/dym-sh/dym.sh
 - https://dym.sh/dym.sh
-- hyper://338f345cfbe6fe467733f0dbce5354be06d000b1e7dbd25ea2ce0938f160c13a /[?](https://beakerbrowser.com)
+- hyper://6a3f5b46695f152e2348755d8ca980bf1e4220f33814c464ec5a3069c974c116 /[?](https://beakerbrowser.com)
 
 
 ## license
