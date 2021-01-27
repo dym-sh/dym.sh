@@ -6,16 +6,18 @@
 
   ; --red : hsl( 0, 93%, 59% )
   ; --light-red : hsl( 0, 93%, 79% )
-  ; --dark-red : hsl( 0, 93%, 39% )
+  ; --dark-red : hsl( 0, 75%, 59% )
   ; --orange : hsl( 32, 98%, 56% )
-  ; --light-orange : hsl( 47, 100%, 79% )
+  ; --light-orange : hsl( 46, 98%, 50% )
   ; --dark-orange : hsla( 32, 98%, 80%, 40% )
   ; --yellow : hsl( 54, 70%, 68% )
+  ; --light-yellow : hsl( 54, 100%, 80% )
   ; --dark-yellow : hsla( 54, 70%, 68%, 35% )
   ; --green : hsl( 80, 76%, 53% )
   ; --dark-green : hsl( 140, 76%, 50% )
   ; --blue : hsl( 190, 81%, 67% )
-  ; --dark-blue : hsl( 190, 81%, 67%, 20% )
+  ; --light-blue : hsl( 190, 100%, 60% )
+  ; --dark-blue : hsl( 190, 67%, 47% )
   ; --purple : hsl( 261, 100%, 75% )
   ; --rose : hsl( 338, 95%, 56% )
   ; --dark-rose : hsl( 338, 95%, 30% )
@@ -141,7 +143,9 @@ a[href^='/'][href*='lang=']::after
   }
 
 abbr
-  { text-decoration : underline dashed }
+  { text-decoration-line : underline
+  ; text-decoration-style : dashed
+  }
 @media( hover : none )
   { abbr[title]::after
     { content : '/*' attr(title) '*/' }
@@ -162,7 +166,11 @@ a[href^='/'][href*='tag=']
 a[href^='/'][href*='lang=']
   { color : var( --blue ) }
 abbr, abbr[title]::after
-  { color : var( --light-orange ) }
+  { color : var( --light-yellow ) }
+blockquote
+  { color : var( --green ) }
+dt
+  { color : var( --purple ) }
 h1
   { color : var( --red ) }
 section.title-occupation
@@ -171,13 +179,25 @@ h2
   { color : var( --orange ) }
 h3
   { color : var( --dark-orange ) }
-section.projects-list h3 a
-, section.projects-list h3::before
+
+/*section.projects-list h3 a
+  { color : var( --bg ) }
+*/
+section.source h3 a
+, section.source h3::before
+  { color : var( --dark-blue ) }
+
+section.grid h3 a
+, section.grid h3::before
+  { color : var( --light-orange ) }
+
+section.ui h3 a
+, section.ui h3::before
+  { color : var( --dark-red ) }
+
+section.comics h3 a
+, section.comics h3::before
   { color : var( --dark-green ) }
-blockquote
-  { color : var( --green ) }
-dt
-  { color : var( --purple ) }
 
 
 r { animation : 6s linear infinite running rainbow }
@@ -203,7 +223,7 @@ r:nth-of-type( n+6 ) { color : var( --purple ); animation-delay : -1s }
 /* grid */
 body
   { background : var( --bg )
-  ; padding : calc( 3 * var( --line-height ) )
+  ; padding : calc( 3 * var( --line-height ) ) 8ch
   ; min-height : calc( 100vh - (6 * var( --line-height )) )
   ; display : grid
   ; grid-template-columns : 12rem 1fr 1fr
@@ -214,7 +234,7 @@ body
     ' skills       skills-tech          skills-speaking       '
     ' personality  personality-mindset  personality-interests '
     ' projects     projects-list        projects-list         '
-    ' cv           cv-jobs              cv-education          '
+    ' cv           cv-work              cv-education          '
     ' networks     networks-links       networks-links        '
   }
 
@@ -231,7 +251,7 @@ section.personality-interests { grid-area : personality-interests }
 section.personality-mindset { grid-area : personality-mindset }
 
 section.cv { grid-area : cv }
-section.cv-jobs { grid-area : cv-jobs }
+section.cv-work { grid-area : cv-work }
 section.cv-education { grid-area : cv-education }
 
 section.projects { grid-area : projects }
@@ -242,13 +262,13 @@ section.projects-list
   ; grid-template-rows : auto
   ; gap : var( --line-height ) 4ch
   ; grid-template-areas :
-    ' p-1  p-3 '
-    ' p-2  p-4 '
+    ' source  grid   '
+    ' ui      comics '
   }
-section.projects-list section.p-1 { grid-area : p-1 }
-section.projects-list section.p-2 { grid-area : p-2 }
-section.projects-list section.p-3 { grid-area : p-3 }
-section.projects-list section.p-4 { grid-area : p-4 }
+section.projects-list section.source { grid-area : source }
+section.projects-list section.grid { grid-area : grid }
+section.projects-list section.ui { grid-area : ui }
+section.projects-list section.comics { grid-area : comics }
 section.projects-list section
   { margin : 0 }
 
@@ -292,7 +312,7 @@ dl
       ' .            personality-interests '
       ' projects     projects-list         '
       ' .            projects-list         '
-      ' cv           cv-jobs               '
+      ' cv           cv-work               '
       ' .            cv-education          '
       ' networks     networks-links        '
       ' .            networks-links        '
@@ -313,9 +333,7 @@ dl
     { margin-bottom : var( --line-height ) }
 
   section.networks-links ul
-    { display : flex
-    ; margin-bottom : var( --line-height )
-    }
+    { display : flex }
   section.networks-links ul li:not( :last-child )
     { margin-right : 1ch }
 }
@@ -324,6 +342,7 @@ dl
 @media( max-width : 1023px )
 { body
     { display : flex
+    ; padding : var( --line-height ) 4ch
     ; flex-direction : column
     ; gap : 0
     }
@@ -333,8 +352,12 @@ dl
   , section.header:not( :first-child ) + section
     { margin-top : 0 }
 
+  section.projects-list section
+  , section.projects-list section:not( :last-child )
+    { margin-bottom : 0 }
+
   section.header:not( :first-child )
-    { margin-top : calc( 2 * var( --line-height ) ) }
+    { margin-top : calc( 3 * var( --line-height ) ) }
   section.header + section
     { margin-top : var( --line-height ) }
 
