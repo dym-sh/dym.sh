@@ -51,14 +51,13 @@ h1
 , h2
 , h3
 , blockquote
-, ul, li
+  /* needed for ::before and ::after */
   { position : relative }
 
 h1::before
 , h2::before
 , h3::before
 , blockquote::before
-, li::before
   { position : absolute
   ; right : 100%
   ; margin-right : 1ch
@@ -67,7 +66,7 @@ h1::before
   }
 
 h1::before
-  { content : '~' }
+  { content : '<~' }
 h2::before
   { content : '=' }
 h3::before
@@ -77,20 +76,10 @@ blockquote::before
 
 li
   { list-style : none }
-
-ul.comma-separated li
+ul li
   { display : inline }
-ul.comma-separated li::before
-  { display : none }
-ul.comma-separated li:not(:last-child)::after
+ul li:not(:last-child)::after
   { content : ', ' }
-
-@media( hover : none )
-  { [title]::after
-      { content : '/*' attr(title) '*/'
-      ; display : inline
-      }
-  }
 
 h2:not( :first-child )
 , h3:not( :first-child )
@@ -105,12 +94,6 @@ a:any-link::after
   { content : ']'
   ; display : inline
   }
-@media( hover : none )
-  { a:any-link[title]::after
-    { content : ']/*' attr(title) '*/'
-    ; display : inline
-    }
-  }
 
 a[href^='/'][href*='tag=']::before
   { content : '#'
@@ -119,12 +102,6 @@ a[href^='/'][href*='tag=']::before
 a[href^='/'][href*='tag=']::after
   { content : ''
   ; display : inline
-  }
-@media( hover : none )
-  { a[href^='/'][href*='tag='][title]::after
-    { content : '/*' attr(title) '*/'
-    ; display : inline
-    }
   }
 
 a[href^='/'][href*='lang=']::before
@@ -135,29 +112,14 @@ a[href^='/'][href*='lang=']::after
   { content : '}'
   ; display : inline
   }
-@media( hover : none )
-  { a[href^='/'][href*='lang='][title]::after
-    { content : '}/*' attr(title) '*/'
-    ; display : inline
-    }
-  }
 
 abbr
   { text-decoration-line : underline
-  ; text-decoration-style : dashed
-  }
-@media( hover : none )
-  { abbr[title]::after
-    { content : '/*' attr(title) '*/' }
+  ; text-decoration-style : dotted
   }
 
 
 /* colors */
-@media( hover : none )
-  { [title]::after
-      { color : var( --gray ) }
-  }
-
 a:any-link
 , a[title]::after
   { color : var( --rose ) }
@@ -172,7 +134,13 @@ blockquote
 dt
   { color : var( --purple ) }
 h1
+, h1 a:any-link
+, h1::before
   { color : var( --red ) }
+h1 a:any-link::before
+, h1 a:any-link::after
+  { content : none }
+
 section.title-occupation
   { color : var( --gray ) }
 h2
@@ -183,20 +151,21 @@ h3
 /*section.projects-list h3 a
   { color : var( --bg ) }
 */
-section.source h3 a
-, section.source h3::before
+
+h3.dark-blue *
+, h3.dark-blue::before
   { color : var( --dark-blue ) }
 
-section.grid h3 a
-, section.grid h3::before
+h3.light-orange *
+, h3.light-orange::before
   { color : var( --light-orange ) }
 
-section.ui h3 a
-, section.ui h3::before
+h3.light-red *
+, h3.light-red::before
   { color : var( --dark-red ) }
 
-section.comics h3 a
-, section.comics h3::before
+h3.dark-green *
+, h3.dark-green::before
   { color : var( --dark-green ) }
 
 
@@ -261,14 +230,7 @@ section.projects-list
   ; grid-template-columns : repeat( 2, 1fr )
   ; grid-template-rows : auto
   ; gap : var( --line-height ) 4ch
-  ; grid-template-areas :
-    ' source  grid   '
-    ' ui      comics '
   }
-section.projects-list section.source { grid-area : source }
-section.projects-list section.grid { grid-area : grid }
-section.projects-list section.ui { grid-area : ui }
-section.projects-list section.comics { grid-area : comics }
 section.projects-list section
   { margin : 0 }
 
@@ -280,13 +242,7 @@ section.networks-links
   ; grid-template-columns : repeat( 4, 1fr )
   ; grid-template-rows : auto
   ; gap : 4ch
-  ; grid-template-areas :
-    ' links-contacts  links-code  links-graphics  links-media '
   }
-section.networks-links section.contacts { grid-area : links-contacts }
-section.networks-links section.code { grid-area : links-code }
-section.networks-links section.graphics { grid-area : links-graphics }
-section.networks-links section.media { grid-area : links-media }
 section.networks-links section
   { margin : 0 }
 
@@ -297,9 +253,17 @@ dl
   }
 
 
+/* all touch-devices */
+@media( hover : none )
+{ [title]::after
+    { content : ' (' attr(title) ')'
+    ; display : inline
+    }
+}
 
-/* screen-sizes */
-@media( max-width : 1279px )
+
+/* tablet */
+@media ( max-width : 1279px )
 { body
     { gap : var( --line-height )
     ; grid-template-columns : 12rem 1fr
@@ -332,14 +296,15 @@ dl
   section.projects-list section:not( :last-child )
     { margin-bottom : var( --line-height ) }
 
-  section.networks-links ul
+  section.networks-links ol
     { display : flex }
-  section.networks-links ul li:not( :last-child )
+  section.networks-links li:not( :last-child )
     { margin-right : 1ch }
 }
 
 
-@media( max-width : 1023px )
+/* mobile */
+@media ( max-width : 1023px )
 { body
     { display : flex
     ; padding : var( --line-height ) 4ch

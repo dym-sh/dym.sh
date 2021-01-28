@@ -17,82 +17,107 @@
 <link rel='icon' type='image/png' sizes='300x300' href='https://dym.sh/favicon.ico'>
 <link rel='apple-touch-icon' type='image/png' sizes='300x300' href='https://dym.sh/favicon.ico'>
 
-<link rel='stylesheet' type='text/css' href='style.css'>
+<style>
+:root
+  { --text : #ccc
+  ; --bg : #222
+  ; --current : #fff
+  ; --font-size : 16pt
+  ; --line-height : 1.5rem
+  }
 
-<nav>
-  <h1>Dym Sohin</h1>
-  <a href='about/'>about</a>
-  <input type='search' name='q' placeholder='search...'>
-</nav>
+* { all : unset
+  ; word-wrap : break-word
+  ; flex-wrap : wrap
+  ; color : var( --text )
+  ; font-size : var( --font-size )
+  ; line-height : var( --line-height )
+  ; font-family : 'DejaVu Sans Mono'
+                , 'PT Mono'
+                , 'Menlo'
+                , 'Consolas'
+                , 'Monaco'
+                , monospace
+  }
 
-<section>
-  <blockquote>drawings, ideas, programmings, humors</blockquote>
-</section>
+head > *
+, title
+, style
+, script
+, [hidden]
+  { display : none }
 
-<section>
-  <q>[wip] pls re-visit next week</q>
-</section>
+a { text-decoration : underline }
+a:link { cursor : pointer }
+a:is( :active, :hover, :focus )
+  { color : var( --current ) }
 
-<section>
-  <h2>code</h2>
-  <a href='/code-1'>1</a>
-  <a href='/code-2'>2</a>
-  <a href='/code-3'>3</a>
-</section>
+sub, sup
+  { font-size : 0.66em }
 
-<section>
-  <h2>comic</h2>
-  <a href='/comic-1'>1</a>
-  <a href='/comic-2'>2</a>
-  <a href='/comic-3'>3</a>
-</section>
-
-<section>
-  <h2>graphic</h2>
-  <a href='/graphic-1'>1</a>
-  <a href='/graphic-2'>2</a>
-  <a href='/graphic-3'>3</a>
-</section>
-
-<section>
-  <h2>photo</h2>
-  <a href='/photo-1'>1</a>
-  <a href='/photo-2'>2</a>
-  <a href='/photo-3'>3</a>
-</section>
-
-<section>
-  <h2>scan</h2>
-  <a href='/scan-1'>1</a>
-  <a href='/scan-2'>2</a>
-  <a href='/scan-3'>3</a>
-</section>
-
-<section>
-  <h2>cfg</h2>
-  <a href='/ubuntu-config'>ubuntu</a>
-  <a href='/macos-config'>macos</a>
-  <a href='/windows-config'>windows</a>
-</section>
+input
+  { border : 1.5pt solid var( --text )
+  ; border-top : none
+  ; border-right : none
+  ; padding : 0 0.5ch
+  }
+input:is( :active, :hover, :focus )
+  { border-color : var( --current )
+  ; color : var( --current )
+  }
 
 
-<section hidden>
-  <h2>networks</h2>
-  <a rel='me' href='mailto:re@dym.sh'>email</a>
-  <a rel='me' target='_blank' href='https://twitter.com/dym_sh'>twitter</a>
-  <a rel='me' target='_blank' href='https://reddit.com/u/dym_sh'>reddit</a>
-  <a rel='me' target='_blank' href='hyper://6a3f5b46695f152e2348755d8ca980bf1e4220f33814c464ec5a3069c974c116'>hyper</a>
+input::placeholder
+  { color : #888 }
 
-  <a rel='me' target='_blank' href='https://github.com/dym-sh'>github</a>
-  <a rel='me' target='_blank' href='https://gitcode.com/dym-sh'>gitcode</a>
-  <a rel='me' target='_blank' href='https://codepen.io/dym-sh'>codepen</a>
-  <a rel='me' target='_blank' href='https://npmjs.com/~dym_sh'>npm</a>
 
-  <a rel='me' target='_blank' href='https://instagram.com/dym_sh'>instagram</a>
-  <a rel='me' target='_blank' href='https://behance.net/dym_sh'>behance</a>
-  <a rel='me' target='_blank' href='https://pixiv.net/en/users/47151825'>pixiv</a>
-  <a rel='me' target='_blank' href='https://figma.com/@dym_sh'>figma</a>
+body
+  { background : var( --bg )
+  ; padding : calc( 2 * var( --line-height ) )
+  ; min-height : calc( 100vh - ( 2 * var( --line-height ) ) )
+  ; display : flex
+  ; flex-direction : column
+  }
 
-  <a rel='me' target='_blank' href='https://soundcloud.com/dym_sh'>soundcloud</a>
-  <a rel='me' target='_blank' href='https://coub.com/dym-sohin'>coub</a>
-</section>
+body > *
+  { display : flex
+  ; flex-direction : row
+  }
+
+a:not([rel='me'])::before
+, h1::before
+, h2::before
+, blockquote::before
+, q::before
+  { content : '~'
+  ; position : absolute
+  ; margin-left : -2ch
+  }
+
+a:not([rel='me'])::before
+  { content : '?' }
+h2::before
+  { content : '+' }
+blockquote::before
+  { content : '>' }
+q::before
+  { content : '!' }
+
+h2
+, q
+  { margin-top : var( --line-height ) }
+</style>
+
+<h1>Dym Sohin</h1>
+<a href='about/'>about</a>
+
+<q>main site is currently [wip]</q>
+<blockquote>pls re-visit next week</blockquote>
+
+<h2>contacts</h2>
+<a rel='me' href='mailto:re@dym.sh'>email</a>
+<a rel='me' target='_blank' href='https://twitter.com/dym_sh'>twitter</a>
+<a rel='me' target='_blank' href='https://reddit.com/u/dym_sh'>reddit</a>
+<a rel='me' target='_blank' href='https://github.com/dym-sh'>github</a>
+<a rel='me' target='_blank' href='https://instagram.com/dym_sh'>instagram</a>
+<a rel='me' target='_blank' href='https://behance.net/dym_sh'>behance</a>
