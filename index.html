@@ -48,28 +48,12 @@ head > *
   { display : none }
 
 a { text-decoration : underline }
-a:link { cursor : pointer }
-a:is( :active, :hover, :focus )
+a:any-link { cursor : pointer }
+a:is( :active
+    , :hover
+    , :focus
+    )
   { color : var( --current ) }
-
-sub, sup
-  { font-size : 0.66em }
-
-input
-  { border : 1.5pt solid var( --text )
-  ; border-top : none
-  ; border-right : none
-  ; padding : 0 0.5ch
-  }
-input:is( :active, :hover, :focus )
-  { border-color : var( --current )
-  ; color : var( --current )
-  }
-
-
-input::placeholder
-  { color : #888 }
-
 
 body
   { background : var( --bg )
@@ -78,24 +62,31 @@ body
   ; flex-direction : column
   }
 
-a:not([rel='me'])::before
-, h1::before
+body > *
+  { position : relative }
+
+h1::before
 , h2::before
 , blockquote::before
 , q::before
-  { content : '~'
-  ; position : absolute
-  ; margin-left : -2ch
+, a:not([rel='me'])::before
+  { position : absolute
+  ; right : 100%
+  ; margin-right : 1ch
+  ; display : inline-block
+  ; text-align : right
   }
 
-a:not([rel='me'])::before
-  { content : '?' }
+h1::before
+  { content : '~' }
 h2::before
   { content : '+' }
 blockquote::before
   { content : '>' }
 q::before
   { content : '!' }
+a:not([rel='me'])::before
+  { content : '?' }
 
 h2
 , q
@@ -109,7 +100,7 @@ h2
 <blockquote>pls re-visit next week</blockquote>
 
 <h2>contacts</h2>
-<a rel='me' href='mailto:re@dym.sh'>email</a>
+<a rel='me' target='_blank' href='mailto:re@dym.sh'>email</a>
 <a rel='me' target='_blank' href='https://twitter.com/dym_sh'>twitter</a>
 <a rel='me' target='_blank' href='https://reddit.com/u/dym_sh'>reddit</a>
 <a rel='me' target='_blank' href='https://github.com/dym-sh'>github</a>
