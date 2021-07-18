@@ -1,25 +1,25 @@
 :root
-  { --text : hsl( 60, 36%, 96% )
-  ; --bg : hsl( 70, 8%, 15% )
+  { --text : #eee
+  ; --bg : #222
   ; --font-size : 16pt
   ; --line-height : 1.5rem
 
-  ; --red : hsl( 0, 93%, 59% )
-  ; --light-red : hsl( 0, 93%, 79% )
+  ; --red : #F62A44
+  ; --light-red : #FABFAB
   ; --dark-red : hsl( 0, 75%, 59% )
   ; --orange : hsl( 32, 98%, 56% )
   ; --light-orange : hsl( 46, 98%, 50% )
   ; --dark-orange : hsla( 32, 98%, 80%, 40% )
-  ; --yellow : hsl( 54, 70%, 68% )
+  ; --yellow : #F4E7A3
   ; --light-yellow : hsl( 54, 100%, 80% )
   ; --dark-yellow : hsla( 54, 70%, 68%, 35% )
-  ; --green : hsl( 80, 76%, 53% )
+  ; --green : #00FF33
   ; --dark-green : hsl( 140, 76%, 50% )
-  ; --blue : hsl( 190, 81%, 67% )
+  ; --blue : #04B0FA
   ; --light-blue : hsl( 190, 100%, 60% )
   ; --dark-blue : hsl( 190, 67%, 47% )
   ; --purple : hsl( 261, 100%, 75% )
-  ; --rose : hsl( 338, 95%, 56% )
+  ; --rose : #FD4B7A
   ; --dark-rose : hsl( 338, 95%, 30% )
   ; --gray : hsl( 50, 11%, 41% )
   ; --light-gray : hsl( 50, 11%, 81% )
@@ -66,7 +66,7 @@ h1::before
   }
 
 h1::before
-  { content : '<~' }
+  { content : '~' }
 h2::before
   { content : '=' }
 h3::before
@@ -95,10 +95,10 @@ a:any-link::after
   { content : ']'
   ; display : inline
   }
-a[href^='/'][href*='tag=']::before { content : '#' }
-a[href^='/'][href*='tag=']::after { content : '' }
-a[href^='/'][href*='lang=']::before { content : '{' }
-a[href^='/'][href*='lang=']::after { content : '}' }
+a.tag::before { content : '#' }
+a.tag::after { content : '' }
+a.lang::before { content : '{' }
+a.lang::after { content : '}' }
 h1 a:any-link::before
 , h1 a:any-link::after
   { content : none }
@@ -111,13 +111,12 @@ abbr
 
 /* colors */
 a:any-link { color : var( --rose ) }
-a[href^='/'][href*='tag='] { color : var( --light-red ) }
-a[href^='/'][href*='lang='] { color : var( --blue ) }
+a.tag { color : var( --light-red ) }
+a.lang { color : var( --blue ) }
 
 abbr, abbr[title]::after { color : var( --light-yellow ) }
 blockquote { color : var( --green ) }
 dt { color : var( --purple ) }
-section.title-occupation { color : var( --gray ) }
 h2 { color : var( --orange ) }
 h3 { color : var( --dark-orange ) }
 
@@ -141,6 +140,9 @@ h3.light-red *
 h3.dark-green *
 , h3.dark-green::before
   { color : var( --dark-green ) }
+
+img
+  { max-width : 100% }
 
 
 r { animation : 6s linear infinite running rainbow }
@@ -173,8 +175,9 @@ body
   ; grid-template-rows : auto
   ; gap : calc( 3 * var( --line-height ) ) 4ch
   ; grid-template-areas :
-    ' title        title-occupation     title-description     '
-    ' skills       skills-tech          skills-speaking       '
+    ' title        title-description    photo                 '
+    ' skills       skills-tech          photo                 '
+    ' .            skills-speaking      photo                 '
     ' personality  personality-mindset  personality-interests '
     ' projects     projects-list        projects-list         '
     ' cv           cv-work              cv-education          '
@@ -182,8 +185,9 @@ body
   }
 
 section.title { grid-area : title }
-section.title-occupation { grid-area : title-occupation }
 section.title-description { grid-area : title-description }
+
+section.photo { grid-area : photo }
 
 section.skills { grid-area : skills }
 section.skills-tech { grid-area : skills-tech }
@@ -242,8 +246,8 @@ dl
     { gap : var( --line-height )
     ; grid-template-columns : 12rem 1fr
     ; grid-template-areas :
-      ' title        title-occupation      '
-      ' .            title-description     '
+      ' title        title-description     '
+      ' .            photo                 '
       ' skills       skills-tech           '
       ' .            skills-speaking       '
       ' personality  personality-mindset   '
@@ -298,6 +302,7 @@ dl
   section.header:not( :first-child )
     { margin-top : calc( 3 * var( --line-height ) ) }
   section.header + section
+  , section.photo
     { margin-top : var( --line-height ) }
 
   h3

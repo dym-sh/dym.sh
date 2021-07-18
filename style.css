@@ -1,9 +1,22 @@
 :root
-  { --text : #ccc
+  { --text : #eee
   ; --bg : #222
-  ; --current : #fff
   ; --font-size : 16pt
   ; --line-height : 1.5rem
+
+  ; --red : #f62a44
+  ; --rose : #fabfab
+  ; --yellow : #f4e7a3
+  ; --lime : #00ff33
+  ; --blue : #04b0fa
+  ; --pink : #fd4b7a
+  ; --purple : #dda1c5
+  ; --turquoise : #42f8bc
+  ; --light-gray : #aaa
+  ; --brown : #6e5c45
+  ; --light-green : #baf39e
+  ; --dark-gray : #333
+  ; --white : #fff
   }
 
 * { all : unset
@@ -33,89 +46,69 @@ a:is( :active
     , :hover
     , :focus
     )
-  { color : var( --current ) }
-
-sub, sup
-  { font-size : 0.66em }
-
-input
-  { border : 1.5pt solid var( --text )
-  ; border-top : none
-  ; border-right : none
-  ; padding : 0 0.5ch
-  }
-input:is( :active, :hover, :focus )
-  { border-color : var( --current )
-  ; color : var( --current )
-  }
-
-
-input::placeholder
-  { color : #888 }
-
+  { color : var( --white ) }
 
 body
   { background : var( --bg )
   ; padding : calc( 2 * var( --line-height ) )
-  ; min-height : calc( 100vh - ( 2 * var( --line-height ) ) )
   ; display : flex
   ; flex-direction : column
   }
 
-h1
-, h2
-, blockquote
-, q
+body > *
   { position : relative }
-
-nav
-  { display : flex
-  ; flex-direction : row
-  }
-nav > *
-  { margin-right : 2ch
-  ;
-  }
 
 h1::before
 , h2::before
 , blockquote::before
 , q::before
+, a.info::before
   { position : absolute
   ; right : 100%
   ; margin-right : 1ch
   ; display : inline-block
   ; text-align : right
   }
+
+h1::before
+  { content : '~' }
 h2::before
   { content : '+' }
 blockquote::before
   { content : '>' }
 q::before
   { content : '!' }
+a.info::before
+  { content : '?' }
 
 h2
+, q
   { margin-top : var( --line-height ) }
 
-section
-  { display : flex
-  ; flex-direction : row
-  ; max-width : 100vw
-  ;  margin-top : calc( 2 * var( --line-height ) )
+
+/* categories */
+section.categories
+  { line-height : 2em
+  ; margin-top : 1em
   }
 
-body > section > a
-  { background : url('i/0.svg') stretch
-  ; width : 10ch
-  ; height : 5rem
-  ; align-content : end
+.cat
+  { padding : 0.25rem 0.5rem
+  ; border-radius : 0.25rem
+  ; margin-top : 1rem
+  ; text-decoration : none
   }
 
-
-/* title on mobile */
-@media( hover : none )
-  { [title]::after
-      { content : '/*' attr(title) '*/'
-      ; display : inline
-      }
-  }
+/* colors */
+.cat.audio { background : var( --purple ); color : var( --bg ) }
+.cat.code { background : var( --dark-gray ); color : var( --white ) }
+.cat.comic { background : var( --white ); color : var( --bg ) }
+.cat.graphics { background : var( --red ); color : var( --white ) }
+.cat.meme { background : var( --lime ); color : var( --bg ) }
+.cat.photo { background : var( --yellow ); color : var( --bg ) }
+.cat.shitpost { background : var( --brown ); color : var( --white ) }
+.cat.sketch { background : var( --turquoise ); color : var( --bg ) }
+.cat.text { background : var( --light-gray ); color : var( --bg ) }
+.cat.typography { background : var( --rose ); color : var( --bg ) }
+.cat.video { background : var( --light-green ); color : var( --bg ) }
+.cat.web { background : var( --blue ); color : var( --white ) }
