@@ -176,8 +176,7 @@ body
   ; gap : calc( 3 * var( --line-height ) ) 4ch
   ; grid-template-areas :
     ' title        title-description    photo                 '
-    ' skills       skills-tech          photo                 '
-    ' .            skills-speaking      photo                 '
+    ' skills       skills-list          photo                 '
     ' personality  personality-mindset  personality-interests '
     ' projects     projects-list        projects-list         '
     ' cv           cv-work              cv-education          '
@@ -190,8 +189,7 @@ section.title-description { grid-area : title-description }
 section.photo { grid-area : photo }
 
 section.skills { grid-area : skills }
-section.skills-tech { grid-area : skills-tech }
-section.skills-speaking { grid-area : skills-speaking }
+section.skills-list { grid-area : skills-list }
 
 section.personality { grid-area : personality }
 section.personality-interests { grid-area : personality-interests }
@@ -241,15 +239,15 @@ dl
 
 
 /* tablet */
-@media ( max-width : 1279px )
+@media ( max-width : 1599px )
 { body
     { gap : var( --line-height )
     ; grid-template-columns : 12rem 1fr
     ; grid-template-areas :
       ' title        title-description     '
       ' .            photo                 '
-      ' skills       skills-tech           '
-      ' .            skills-speaking       '
+      ' skills       skills-list           '
+      ' .            skills-list           '
       ' personality  personality-mindset   '
       ' .            personality-interests '
       ' projects     projects-list         '
@@ -282,7 +280,7 @@ dl
 
 
 /* mobile */
-@media ( max-width : 1023px )
+@media ( max-width : 959px )
 { body
     { display : flex
     ; padding : var( --line-height ) 4ch

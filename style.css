@@ -16,6 +16,7 @@
   ; --brown : #6e5c45
   ; --light-green : #baf39e
   ; --dark-gray : #333
+  ; --true-gray : #808080
   ; --white : #fff
   }
 
@@ -43,17 +44,27 @@ head > *
 a { text-decoration : underline }
 a:any-link { cursor : pointer }
 a:is( :active
-    , :hover
     , :focus
-    )
+    , :hover
+    ):not( .tag )
   { color : var( --white ) }
 
 body
   { background : var( --bg )
-  ; padding : calc( 2 * var( --line-height ) )
-  ; display : flex
-  ; flex-direction : column
+  ; display : grid
+  ; padding : max( 3vw, 3vh )
+  ; gap : max( 3vw, 3vh )
+  ; grid-template-rows : repeat( 3, 1fr )
+  ; grid-template-columns : repeat( 3, 1fr )
+  ; grid-template-areas :
+    ' .  .  about    '
+    ' .  .  tag-list '
+    ' .  .  tag-list '
   }
+.card.about { grid-area : about }
+.card.tag-list { grid-area : tag-list }
+
+
 
 body > *
   { position : relative }
@@ -71,7 +82,7 @@ h1::before
   }
 
 h1::before
-  { content : '~' }
+  { content : '/' }
 h2::before
   { content : '+' }
 blockquote::before
@@ -81,18 +92,16 @@ q::before
 a.info::before
   { content : '?' }
 
-h2
-, q
-  { margin-top : var( --line-height ) }
 
-
-/* categories */
-section.categories
-  { line-height : 2em
-  ; margin-top : 1em
+/* tags */
+ul.tags
+  { display : flex
+  ; flex-wrap : all
+  ; gap : 1rem
+  ; height : 0
   }
 
-.cat
+.tag
   { padding : 0.25rem 0.5rem
   ; border-radius : 0.25rem
   ; margin-top : 1rem
@@ -100,15 +109,94 @@ section.categories
   }
 
 /* colors */
-.cat.audio { background : var( --purple ); color : var( --bg ) }
-.cat.code { background : var( --dark-gray ); color : var( --white ) }
-.cat.comic { background : var( --white ); color : var( --bg ) }
-.cat.graphics { background : var( --red ); color : var( --white ) }
-.cat.meme { background : var( --lime ); color : var( --bg ) }
-.cat.photo { background : var( --yellow ); color : var( --bg ) }
-.cat.shitpost { background : var( --brown ); color : var( --white ) }
-.cat.sketch { background : var( --turquoise ); color : var( --bg ) }
-.cat.text { background : var( --light-gray ); color : var( --bg ) }
-.cat.typography { background : var( --rose ); color : var( --bg ) }
-.cat.video { background : var( --light-green ); color : var( --bg ) }
-.cat.web { background : var( --blue ); color : var( --white ) }
+.audio
+, .audio a *
+  { background : var( --purple ); color : var( --bg ) }
+.code
+, .code a *
+  { background : var( --dark-gray ); color : var( --white ) }
+.comic
+, .comic a *
+  { background : var( --white ); color : var( --bg ) }
+.graphics
+, .graphics a *
+  { background : var( --red ); color : var( --white ) }
+.meme
+, .meme a *
+  { background : var( --lime ); color : var( --bg ) }
+.photo
+, .photo a *
+  { background : var( --yellow ); color : var( --bg ) }
+.shitpost
+, .shitpost a *
+  { background : var( --brown ); color : var( --white ) }
+.sketch
+, .sketch a *
+  { background : var( --turquoise ); color : var( --bg ) }
+.text
+, .text a *
+  { background : var( --light-gray ); color : var( --bg ) }
+.typography
+, .typography a *
+  { background : var( --rose ); color : var( --bg ) }
+.video
+, .video a *
+  { background : var( --light-green ); color : var( --bg ) }
+.web
+, .web a *
+  { background : var( --blue ); color : var( --white ) }
+
+.card
+  { border-radius : 1rem
+  ; border : 0.15rem solid #fff3
+  ; width : 100%
+  ; max-height :
+  ; display : flex
+  ; overflow : hidden
+  }
+.card:is( :active
+        , :focus
+        , :hover
+        )
+  { border-color : #fff5 }
+
+.card > a
+  { text-decoration : none
+  ; max-width : 100%
+  ; display : flex
+  ; flex-direction : column
+  }
+
+.card a *::before
+  { display : none }
+
+.card figure
+  { width : 100%
+  ; aspect-ratio : 2 / 1
+  ; text-align : center
+  }
+.card figure img
+  { width : 100%
+  }
+
+.card h2
+  { padding : 0 1rem 0 1rem
+  ; line-height : 2rem
+  ; max-width : calc( 100% - 2rem )
+  ; text-overflow : ellipsis
+  }
+
+.card h3
+  { padding : 0 1rem 0.5rem 1rem
+  ; line-height : 1.5rem
+  ; filter : opacity( 50% )
+  ; max-width : calc( 100% - 1.5rem )
+  ; text-overflow : ellipsis
+  }
+
+
+.no-decor
+  { border-radius : 0
+  ; border : none
+  ; background : none
+  }
