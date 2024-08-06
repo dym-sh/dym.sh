@@ -1,0 +1,636 @@
+:root
+{ color-scheme : dark
+; --bg   : #1c1c1c
+; --text : #fff
+
+; --red       : #ff5555
+; --yellow    : #f4e7a3
+; --green     : #baf39e
+; --blue      : #82d8fd
+; --rose      : #fddec6
+
+; --teal      : #85f3cf
+; --orange    : #ffbf57
+; --honey     : #ff853e
+; --honey-tr     : #ff853e80
+; --pink      : #ffa6ff
+
+; --gray      : #ccc
+; --true-gray : #808080
+; --dark      : #222
+
+; --font-size   : 20px
+; --line-height : 1.75em
+
+; --mw    : 22rem
+; --round : 9999px
+}
+
+
+/* *:not(svg, svg *) */
+  a
+, aside
+, blockquote
+, body
+, div
+, figcaption
+, figure
+, footer
+, img
+, main
+, nav
+, section
+, span
+, ul, ol, li
+, dl, dd, dt
+{ all         : unset
+; margin      : 0
+; padding     : 0
+; display     : flex
+; gap         : 1rem
+; flex-wrap   : wrap
+; word-wrap   : break-word
+; hyphens     : auto
+; box-sizing  : border-box
+; overflow    : visible
+; color       : var( --text )
+; line-height : var( --line-height )
+; transition  : all 0.25s ease-out
+; font-family
+    : 'Kadwa'
+    , 'DejaVu Sans'
+    , 'PT Sans'
+    , 'Helvetica'
+    , 'Helvetica Rounded'
+    , sans-serif
+}
+
+/* hidden */
+  head
+, title
+, style
+, script
+, [hidden]
+, [type=hidden]
+, .hidden
+, summary ::-webkit-details-marker
+{ display : none }
+
+  [disabled]
+, .disabled
+{ opacity : 0.5
+; cursor : not-allowed
+; pointer-events : none
+}
+
+html
+{ scroll-behavior : smooth
+; font-size : var( --font-size )
+; display : unset
+; line-height : 1.5em
+}
+
+body
+{ background : var( --bg )
+; min-height : 100vh
+; min-width : var( --mw )
+; max-width : 60rem
+; margin : 0 auto
+; flex-direction : column
+; gap : 0
+}
+
+nav
+{ padding : 3rem 1rem }
+
+
+aside
+{ gap : 1.25rem
+; margin-bottom : 3rem
+}
+aside a:any-link
+{ justify-content : center
+; flex-basis : 7rem
+; border-radius : 0.125rem
+; padding : 0.5rem 1rem
+; border : 0.125rem solid var(--green)
+; flex-wrap : nowrap
+; gap : 0
+}
+  aside a:active
+, aside a:focus
+, aside a:hover
+{ background : var(--bg)
+; box-shadow:
+    0 0 0 0.125rem var(--bg)
+    , 0 0 0 0.25rem var(--green)
+}
+  aside a
+, aside a > span
+, aside a:any-link
+, aside a:any-link > span
+{ color : var(--green)
+; flex-wrap : nowrap
+; white-space : nowrap
+}
+aside a:any-link > span
+{ text-decoration : underline }
+
+aside a.current
+{ border : 0.125rem dotted var(--honey) }
+
+  aside a.current
+, aside a.current > span {
+  color : var(--honey);
+  cursor : unset;
+  text-decoration : unset;
+}
+  aside a.current:active
+, aside a.current:focus
+, aside a.current:hover {
+  background : unset;
+  box-shadow : unset;
+}
+
+
+main
+{ flex-grow : 1
+; align-content : flex-start
+; justify-content : center
+; align-self : center
+; padding : 0 1rem
+}
+
+footer
+{ flex-wrap : wrap
+; justify-content : center
+; padding : 3rem 1rem
+; align-content : flex-end
+; flex-grow : 1
+; flex-direction : row
+}
+
+
+input::placeholder
+{ color : gray }
+
+  a:any-link
+, button
+, label[for]
+, input[type=submit]
+, input[type=button]
+, input[type=checkbox]
+, input[type=radio]
+, input[type=file]
+, input[type=color]
+, summary
+{ cursor : pointer
+; transition : box-shadow 0.25s ease-out
+}
+
+a:any-link
+{ color : var(--blue) }
+
+.c
+{ align-content   : center
+; align-items     : center
+; justify-content : center
+; justify-items   : center
+; text-align      : center
+}
+
+.round
+{ border-radius : var( --round ) }
+
+img
+{ max-width : 100vw
+; overflow : hidden
+}
+
+.buttons
+{ gap : 1rem
+; padding : 1rem
+; background : white
+; flex-wrap : nowrap
+}
+
+.buttons img
+{ height : 2rem }
+
+.buttons > *
+{ height : 2rem
+; min-width : 2rem
+}
+
+.buttons > a:any-link
+{ background :
+    var( --b, var( --true-gray ) )
+    url( 'button-gradient.svg' )
+    50% 50% no-repeat
+; background-size : cover
+; box-shadow
+    : inset 0 0 0 0.125rem #fff0
+    , 0 0 0 0.125rem #0000
+}
+
+  .buttons > a:hover
+, .buttons > a:focus
+, .buttons > a:active
+{ box-shadow
+    : inset 0 0 0 0.125rem #fff
+    , 0 0 0 0.125rem var( --b, var( --true-gray ) )
+}
+
+.buttons .group
+{ padding : 0 }
+
+.buttons.round > *
+{ border-radius : var( --round ) }
+
+.gallery
+{ background : white
+; padding : 0.5rem
+; gap : 0.5rem
+; border-radius : 0.5rem
+; justify-content : center
+; max-width : 50rem
+}
+
+.gallery figure
+{ position : relative }
+.gallery figure::before
+{ box-shadow: inset 0 0 0 0.125rem #0003
+; z-index : 2
+; position: absolute
+; width: 100%
+; height: 100%
+; pointer-events : none
+; display : block
+; content : ''
+; border-radius : 0.25rem
+}
+
+section
+{ gap : 1rem
+; flex-direction : column
+}
+section .gallery
+{ max-width : 32rem
+; background : var(--dark)
+}
+
+section .gallery a:any-link
+{ color : var(--bg)
+; text-decoration: none
+}
+  a.th:hover figure
+, a.th:focus figure
+, a.th:active figure
+{ box-shadow
+    : 0 0 0 0.1rem #fff
+    , 0 0 0 0.2rem #0007
+}
+  section .gallery a.th:hover figure
+, section .gallery a.th:focus figure
+, section .gallery a.th:active figure
+{ box-shadow
+    : 0 0 0 0.1rem var(--dark)
+    , 0 0 0 0.2rem white
+}
+
+  section .gallery a.th:hover figure::before
+, section .gallery a.th:focus figure::before
+, section .gallery a.th:active figure::before
+{ box-shadow : 0 0 0 0 #0000 }
+
+.gallery figcaption
+{ color : var(--dark) }
+
+
+.th
+{ border-radius : 0.5rem }
+
+  .th img
+, .th picture
+{ width : 100%
+; height : 100%
+; object-fit : cover
+; align-content : center
+; justify-content : center
+; box-shadow
+    : inset 0 0 0 0.125rem #0001
+    , 0 0 0 0.125rem #0000
+}
+figure
+{ display : grid
+; border-radius : 0.25rem
+; overflow : hidden
+; align-items : end
+; justify-items : stretch
+; grid-template :
+    'all'
+    9rem
+    /
+    16rem
+}
+  figure > img
+, figure > picture
+, figure > figcaption
+{ grid-area : all }
+
+figure > figcaption
+{ padding : 0 0.5rem
+; backdrop-filter : blur( 0.125rem )
+; background-color : #fff9
+; border-radius : 0.125rem
+; justify-self : flex-start
+; margin : 0.125rem
+; max-height : 2.25rem
+; overflow : hidden
+; text-overflow : ellipsis
+}
+  figure:hover > figcaption
+, figure:active > figcaption
+, figure:focus > figcaption
+{ max-height : 100% }
+
+.bg-icon
+{ background-image : url( './button-gradient.svg' )
+                   , url( './about/icon.png' ) !important
+}
+
+.end
+{ justify-items : end
+; justify-content : end
+}
+
+  input
+, button
+{ box-shadow : inset 0 0 0 0.125rem #ddd }
+
+input
+{ width : 14rem
+; padding : 0 1rem
+}
+
+input[type="search"] + button
+{ margin-left : -3rem
+; display : none
+}
+
+  input[type="search"]:hover + button
+, input[type="search"]:focus + button
+, input[type="search"]:active + button
+{ display : flex
+; border : 0.125rem solid #bbb
+; box-shadow : inset 0 0 0 0.125rem transparent
+}
+
+button
+{ background-color : var(--b, var( --gray ) ) }
+
+  button:hover
+, button:focus
+, button:active
+{ box-shadow : inset 0 0 0 0.125rem #fff !important
+; display : flex
+}
+
+  input:hover
+, input:focus
+, input:active
+{ box-shadow : inset 0 0 0 0.125rem #bbb }
+
+
+.red    { --b : var( --red )    }
+.yellow { --b : var( --yellow ) }
+.green  { --b : var( --green )  }
+.blue   { --b : var( --blue )   }
+.rose   { --b : var( --rose )   }
+.teal   { --b : var( --teal )   }
+.orange { --b : var( --orange ) }
+.pink   { --b : var( --pink )   }
+.gray   { --b : var( --gray )   }
+
+.col-2
+{ display : grid
+; gap : 0 1rem
+; grid-template-columns : 1fr 1fr
+}
+
+.about
+{ gap : 3rem
+; display : grid
+; grid-template-columns : 10rem 1fr
+; align-items: start
+; align-content: start
+}
+
+.about a
+, summary
+{ border-radius : 0.125rem
+; text-decoration : underline
+}
+
+  a[href^='https://dym.sh/']
+, a[href^='/']
+, a[href^='./']
+, a[href^='../']
+, a[href^='#']
+, summary
+{ color : var(--green) }
+
+  .about a:not(.th):active
+, .about a:not(.th):focus
+, .about a:not(.th):hover
+{ background : var(--bg)
+; box-shadow:
+    0 0 0 0.125rem var(--bg)
+    , 0 0 0 0.25rem var(--text)
+    , 0 0 0 0.5rem var(--bg)
+}
+
+  h1
+, h2
+, h3
+{ margin : 0
+; text-align : right
+; font-size : 1rem
+; color : var(--honey)
+; font-weight : 500
+}
+.about h3
+{ text-align : unset
+; margin-top: 1rem
+}
+
+
+h2 a
+{ display: inline }
+h2 a:any-link
+, h2 a[href^='https://dym.sh/']:any-link
+, h2 a[href^='/']:any-link
+{ color : var(--honey) }
+
+  .about ul
+, .about p
+{ margin : 0 }
+
+  h1 + ul
+, h2 + ul
+, h3 + ul
+{ padding-top : 0 }
+
+  .about ul + h1
+, .about ul + h2
+, .about ul + h3
+, .about ul > :last-child
+{ padding-bottom : 0 }
+
+ul
+{ gap : 0
+; flex-direction : column
+; flex-wrap : wrap
+}
+ul > li
+{ list-style : none
+; display : unset
+}
+  ul > li > *
+, p > *
+{ display : inline
+; gap : 0
+; padding : 0
+}
+
+ul > li::before
+{ content : "â€“"
+; padding-right : 0.5rem
+; width : 2rem
+}
+
+  .slides
+, .pic
+{ max-width : 50rem
+; flex-direction : column
+; gap : 0.5rem
+; background : var(--bg, white)
+; padding : 0.5rem
+; border-radius : 0.5rem
+; justify-content : center
+; min-width: 16rem
+}
+
+  .slides img
+, .pic img
+{ max-width : 100%
+; min-width : 1rem
+; align-items: center
+; border-radius: 0.25rem
+}
+
+.buttons .current
+{ position : relative
+; justify-content : center
+; align-items : center
+}
+
+.buttons .current::before
+{ display : block
+; pointer-events : none
+; content : ''
+; width : 0.75rem
+; height : 0.75rem
+; background : white
+; border-radius : var( --round )
+}
+
+
+@media screen and (max-width : 600px) {
+  .about
+    { display : flex
+    ; flex-direction : column
+    ; gap : 1rem
+    }
+  h2
+    { align-content : flex-start
+    ; margin-top : 1rem
+    }
+}
+@media screen and (max-width : 800px) {
+  .about .col-2
+    { display : flex }
+}
+@media screen and (max-width : 1000px) {
+  .about .col-2.tablet-col-1
+    { display : flex }
+}
+
+.pics
+{ gap : 6rem
+}
+.pics .pic
+{ padding : 0
+; overflow : hidden
+}
+
+.col
+{ flex-direction : column }
+.row
+{ flex-direction : row }
+.nowrap
+{ flex-wrap : nowrap }
+.wrap
+{ flex-wrap: wrap }
+
+.thumbnail
+{ justify-self : flex-end
+; margin-top: 0.45rem
+; border-radius : 0.25rem
+; overflow : hidden
+; position : relative
+}
+.thumbnail::before
+{ z-index : 2
+; position: absolute
+; width: 100%
+; height: 100%
+; pointer-events : none
+; display : block
+; content : ''
+; border-radius : 0.25rem
+; box-shadow : inset 0 0 0 0.125rem var(--honey-tr)
+}
+.thumbnail img
+{ width : 7.5rem
+; height : 7.5rem
+; object-fit : cover
+}
+
+blockquote
+{ font-style : italic
+; gap: 0.5rem
+; flex-wrap : nowrap
+}
+blockquote::before
+{ content: '>'
+; text-align : right
+}
+
+.article
+{ flex-direction: column }
+.article img
+{
+  max-width: 100%;
+}
+
+dl
+{ display: grid
+; grid-template: auto / auto 1fr
+}
+dd { justify-content: flex-start }
+dt { justify-content: flex-end }
+
+
+dfn[title]
+{ border-bottom: 1pt dotted var(--text) }

@@ -1,1 +1,4 @@
-vendor/
+/public/build
+/vendor/
+.env
+/node_modules/
