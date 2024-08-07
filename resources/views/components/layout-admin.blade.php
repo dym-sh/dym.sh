@@ -19,20 +19,20 @@
 </nav>
 
 
-{{-- <?php
-if ( $_SESSION['active']) {
-  echo $slot;
-} else { ?>
- --}}
-
-<form class="col c" method="post" name="login_form">
-  <input type="email" name="email" placeholder="email">
-  <input type="password" name="password" placeholder="password">
+@guest
+<form class="col c" method="post" name="login_form" id="login_form" action="/login">
+  @csrf
+  <input type="email" name="email" placeholder="email"
+    :value="old('email')"
+    required>
+  <input type="password" name="password" placeholder="password" required>
   <button onclick="login_form.submit()">Login</button>
 </form>
+@endguest
 
+@auth
 {{ $slot }}
-{{-- <?php } ?> --}}
+@endauth
 
 <footer class="c">
   <form class="buttons round c" method="get" name="search_form">
