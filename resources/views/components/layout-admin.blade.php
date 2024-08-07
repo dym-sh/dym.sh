@@ -11,10 +11,10 @@
 <nav class="c">
   <div class="buttons round">
     <x-nav-link class="orange">new</x-nav-link>
-    <x-nav-link class="gray">list</x-nav-link>
+    <x-nav-link class="rose">list</x-nav-link>
     <x-nav-link class="pink">tags</x-nav-link>
-    <x-nav-link class="gray">collections</x-nav-link>
-    <x-nav-link class="gray">admin/list</x-nav-link>
+    <x-nav-link class="teal">collections</x-nav-link>
+    <x-nav-link class="gray">/</x-nav-link>
   </div>
 </nav>
 
@@ -26,9 +26,9 @@ if ( $_SESSION['active']) {
  --}}
 
 <form class="col c" method="post" name="login_form">
-    <input type="email" name="email" placeholder="email">
-    <input type="password" name="password" placeholder="password">
-    <button onclick="login_form.submit()">Login</button>
+  <input type="email" name="email" placeholder="email">
+  <input type="password" name="password" placeholder="password">
+  <button onclick="login_form.submit()">Login</button>
 </form>
 
 {{ $slot }}
@@ -36,11 +36,13 @@ if ( $_SESSION['active']) {
 
 <footer class="c">
   <form class="buttons round c" method="get" name="search_form">
-    <input type="search" name="search">
+    <input type="search" name="search" placeholder="search">
     <button onclick="search_form.submit()"
       class="gray" title="search"
-      ><span class="hidden">/</span>
-    </search>
+      ><span class="hidden">search</span>
+    </button>
+    <a href="/rss" class="orange" title="rss"><span class="hidden">rss</span>
+    </a>
   </form>
 </footer>
 

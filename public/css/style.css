@@ -229,7 +229,7 @@ img
 .buttons > a:any-link
 { background :
     var( --b, var( --true-gray ) )
-    url( 'button-gradient.svg' )
+    url( './button-gradient.svg' )
     50% 50% no-repeat
 ; background-size : cover
 ; box-shadow
@@ -390,21 +390,6 @@ input
 { width : 14rem
 }
 
-.buttons input[type="search"]
-{ color : var(--bg) }
-
-input[type="search"] + button
-{ margin-left : -3rem
-; display : none
-}
-
-  input[type="search"]:hover + button
-, input[type="search"]:focus + button
-, input[type="search"]:active + button
-{ display : flex
-; border : 0.125rem solid #bbb
-; box-shadow : inset 0 0 0 0.125rem transparent
-}
 
 button
 { background-color : var(--b, var( --gray ) ) }
@@ -412,14 +397,52 @@ button
   button:hover
 , button:focus
 , button:active
-{ box-shadow : inset 0 0 0 0.125rem #fff !important
+{ box-shadow
+    : inset 0 0 0 0.125rem #0002
+    , 0 0 0 0.175rem var(--bg)
+    , 0 0 0 0.25rem #fff
 ; display : flex
 }
 
   input:hover
 , input:focus
 , input:active
-{ box-shadow : inset 0 0 0 0.125rem #bbb }
+{ box-shadow
+    : inset 0 0 0 0.125rem #bbb
+    , 0 0 0 0.175rem var(--bg)
+    , 0 0 0 0.25rem #fff
+  }
+
+.buttons input[type="search"]
+{ color : var(--bg)
+; width : 10rem
+}
+
+.buttons input[type="search"] + button
+{ margin-left : -3rem
+; background : #ddd
+; border : 0.125rem solid #ddd
+}
+
+  .buttons input[type="search"]:hover
+, .buttons input[type="search"]:focus
+, .buttons input[type="search"]:active
+{ box-shadow: inset 0 0 0 0.125rem #bbb
+}
+  .buttons input[type="search"]:hover + button
+, .buttons input[type="search"]:focus + button
+, .buttons input[type="search"]:active + button
+{ border : 0.125rem solid #bbb
+; box-shadow : inset 0 0 0 0.125rem transparent
+}
+  .buttons input[type="search"] + button:hover
+, .buttons input[type="search"] + button:focus
+, .buttons input[type="search"] + button:active
+{ border : 0.125rem solid #bbb
+; box-shadow : inset 0 0 0 0.125rem transparent
+    , 0 0 0 0.125rem #fff
+    , 0 0 0 0.25rem #bbb
+}
 
 
 .red    { --b : var( --red )    }
