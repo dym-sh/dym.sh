@@ -1,6 +1,6 @@
 <x-layout>
 
-<main class="about">
+<main class="article">
 	<firugre class="thumbnail">
 		<img src="/pages/about/photo.jpg" width="125" height="125" alt="photo">
 	</firugre>

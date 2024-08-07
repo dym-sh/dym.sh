@@ -70,8 +70,8 @@
 <footer class="c">
   <div class="buttons round">
     <a href="{{ str_starts_with(request()->path(), 'about') ? '/' : '/about/' }}"
-      class="bg-icon" title="about"
-      ><span class="hidden">about</span>
+      class="bg-icon" title="{{ str_starts_with(request()->path(), 'about') ? '/' : 'about' }}"
+      ><span class="hidden">{{ str_starts_with(request()->path(), 'about') ? '/' : 'about' }}</span>
     </a>
   </div>
 </footer>

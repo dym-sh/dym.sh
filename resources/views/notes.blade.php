@@ -6,7 +6,7 @@
 	<a href="/articles">/<span>articles</span></a>
 </aside>
 
-<main class="about">
+<main class="article">
 	<h1>2024</h1>
 	<section>
 		<p>a groot start</p>

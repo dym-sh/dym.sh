@@ -41,7 +41,7 @@
 
 </div>
 
-<div class="about">
+<div class="article">
 
 <h2>/vis</h2>
 <ul>
