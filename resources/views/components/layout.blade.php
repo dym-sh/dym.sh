@@ -55,26 +55,11 @@
 
 <nav class="c">
   <div class="buttons round">
-    <a href="{{ str_starts_with(request()->path(), 'graphics') ? '/' : '/graphics/' }}"
-      class="red {{ str_starts_with(request()->path(), 'graphics') ? 'current' : '' }}"
-      title="graphics"
-      ><span class="hidden">graphics</span></a>
-    <a href="{{ str_starts_with(request()->path(), 'photos') ? '/' : '/photos/' }}"
-      class="yellow {{ str_starts_with(request()->path(), 'photos') ? 'current' : '' }}"
-      title="photos"
-      ><span class="hidden">photos</span></a>
-    <a href="{{ str_starts_with(request()->path(), 'comics') ? '/' : '/comics/' }}"
-      class="green {{ str_starts_with(request()->path(), 'comics') ? 'current' : '' }}"
-      title="comics"
-      ><span class="hidden">comics</span></a>
-    <a href="{{ str_starts_with(request()->path(), 'code') ? '/' : '/code/' }}"
-      class="blue {{ str_starts_with(request()->path(), 'code') ? 'current' : '' }}"
-      title="code"
-      ><span class="hidden">code</span></a>
-    <a href="{{ str_starts_with(request()->path(), 'notes') ? '/' : '/notes/' }}"
-      class="rose {{ str_starts_with(request()->path(), 'notes') ? 'current' : '' }}"
-      title="notes"
-      ><span class="hidden">notes</span></a>
+    <x-nav-link class="red">graphics</x-nav-link>
+    <x-nav-link class="yellow">photos</x-nav-link>
+    <x-nav-link class="green">comics</x-nav-link>
+    <x-nav-link class="blue">code</x-nav-link>
+    <x-nav-link class="rose">notes</x-nav-link>
   </div>
 </nav>
 
