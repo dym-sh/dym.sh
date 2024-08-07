@@ -356,7 +356,7 @@ figure > figcaption
 
 .bg-icon
 { background-image : url( './button-gradient.svg' )
-                   , url( './about/icon.png' ) !important
+                   , url( '/icon.png' ) !important
 }
 
 .end
@@ -504,7 +504,7 @@ ul > li
 }
 
 ul > li::before
-{ content : "â€“"
+{ content : "–"
 ; padding-right : 0.5rem
 ; width : 2rem
 }

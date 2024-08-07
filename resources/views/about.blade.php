@@ -1,6 +1,8 @@
+<x-layout>
+
 <main class="about">
 	<firugre class="thumbnail">
-		<img src="./photo.jpg" width="125" height="125" alt="photo">
+		<img src="/pages/about/photo.jpg" width="125" height="125" alt="photo">
 	</firugre>
 
 	<section class="col">
@@ -10,12 +12,12 @@
 		<blockquote>create things thyself would use, and help others</blockquote>
 
 		<p>Résumé
-			[ <a target="_blank" href="/about/resume.pdf">.pdf</a>
-			/ <a target="_blank" href="/about/resume.txt">.txt</a>
+			[ <a target="_blank" href="/pages/about/resume.pdf">.pdf</a>
+			/ <a target="_blank" href="/pages/about/resume.txt">.txt</a>
 			]
 			<br>Lebenslauf
-			[ <a target="_blank" href="/about/lebenslauf.pdf">.pdf</a>
-			/ <a target="_blank" href="/about/lebenslauf.txt">.txt</a>
+			[ <a target="_blank" href="/pages/about/lebenslauf.pdf">.pdf</a>
+			/ <a target="_blank" href="/pages/about/lebenslauf.txt">.txt</a>
 			]
 		</p>
 	</section>
@@ -32,11 +34,11 @@
 
 	<h2>more portrets</h2>
 	<section class="row wrap">
-		<firugre class="thumbnail"><img src="./05.jpg" width="125" height="125" alt="photo 05"></firugre>
-		<firugre class="thumbnail"><img src="./03.jpg" width="125" height="125" alt="photo 03"></firugre>
-		<firugre class="thumbnail"><img src="./02.jpg" width="125" height="125" alt="photo 02"></firugre>
-		<firugre class="thumbnail"><img src="./04.jpg" width="125" height="125" alt="photo 04"></firugre>
-		<firugre class="thumbnail"><img src="./01.png" width="125" height="125" alt="photo 01"></firugre>
+		<firugre class="thumbnail"><img src="/pages/about/05.jpg" width="125" height="125" alt="photo 05"></firugre>
+		<firugre class="thumbnail"><img src="/pages/about/03.jpg" width="125" height="125" alt="photo 03"></firugre>
+		<firugre class="thumbnail"><img src="/pages/about/02.jpg" width="125" height="125" alt="photo 02"></firugre>
+		<firugre class="thumbnail"><img src="/pages/about/04.jpg" width="125" height="125" alt="photo 04"></firugre>
+		<firugre class="thumbnail"><img src="/pages/about/01.png" width="125" height="125" alt="photo 01"></firugre>
 	</section>
 
 	<h2 id="legalese">legalese</h2>
@@ -318,3 +320,5 @@
 	</ul>
 
 </main>
+
+</x-layout>
