@@ -427,6 +427,7 @@ button
 { margin-left : -3rem
 ; background : #ddd
 ; border : 0.125rem solid #ddd
+; box-shadow : inset 0 0 0 0.125rem #ddd
 }
 
   .buttons input[type="search"]:hover
@@ -443,11 +444,19 @@ button
   .buttons input[type="search"] + button:hover
 , .buttons input[type="search"] + button:focus
 , .buttons input[type="search"] + button:active
+{ border : 0.125rem solid #ddd
+; box-shadow : inset 0 0 0 0.125rem transparent
+    , 0 0 0 0.125rem #fff
+    , 0 0 0 0.3rem #ddd
+}
+  .buttons input[type="search"]:focus + button:hover
+, .buttons input[type="search"]:active + button:hover
 { border : 0.125rem solid #bbb
 ; box-shadow : inset 0 0 0 0.125rem transparent
     , 0 0 0 0.125rem #fff
-    , 0 0 0 0.25rem #bbb
+    , 0 0 0 0.3rem #bbb
 }
+
 
 
 .red    { --b : var( --red )    }
@@ -685,3 +694,29 @@ dfn[title]
 
 .w-30
 { width : 30rem }
+
+.error
+{ color : var(--red) }
+
+.x-input
+{ display : grid
+; justify-content : center
+; gap : 0.5rem 1rem
+; grid-template :
+    ' label  input '
+    ' error  error '
+    auto / 10rem 14rem ;
+}
+.x-input label
+{ grid-area : label
+; justify-self : flex-end
+; align-self : center
+; text-align : right
+}
+.x-input input
+{ grid-area : input
+; justify-self : flex-start
+; align-self : flex-start
+}
+.x-input .error
+{ grid-area : error }

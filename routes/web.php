@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,10 @@ Route::name('admin.edit')->get('/edit/{slug}', function ($name = null) {
 Route::name('admin.index')->get('/admin', function ($name = null) {
     return view('admin.index');
 });
+
+
+Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);

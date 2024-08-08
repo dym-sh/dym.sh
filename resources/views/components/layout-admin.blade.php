@@ -20,18 +20,29 @@
 
 
 @guest
+
+<a href="/register">Register</a>
+
 <form class="col c" method="post" name="login_form" id="login_form" action="/login">
   @csrf
-  <input type="email" name="email" placeholder="email"
-    :value="old('email')"
-    required>
-  <input type="password" name="password" placeholder="password" required>
-  <button onclick="login_form.submit()">Login</button>
+  <x-input type="email" :value="old('email')"
+    title="E-Mail"
+    required>email</x-input>
+  <x-input type="password"
+    title="Password"
+    required>password</x-input>
+  <button type="submit">Login</button>
 </form>
 @endguest
 
 @auth
 {{ $slot }}
+
+
+<form class="col c" method="post" name="logout_form" id="logout_form" action="/logout">
+  @csrf
+  <button type="submit">Logout</button>
+</form>
 @endauth
 
 <footer class="c">
@@ -41,7 +52,7 @@
       class="gray" title="search"
       ><span class="hidden">search</span>
     </button>
-    <a href="/rss" class="orange" title="rss"><span class="hidden">rss</span>
+    <x-nav-link class="orange">rss</x-nav-link>
     </a>
   </form>
 </footer>
