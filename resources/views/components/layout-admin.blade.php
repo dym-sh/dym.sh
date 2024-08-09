@@ -3,24 +3,32 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf8">
 <title>{{ request()->path() }}</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
 </head>
 
 <body>
 
 <nav class="c">
-  <div class="buttons round">
-    <x-nav-link class="orange">new</x-nav-link>
-    <x-nav-link class="rose">list</x-nav-link>
-    <x-nav-link class="pink">tags</x-nav-link>
-    <x-nav-link class="teal">collections</x-nav-link>
-    <x-nav-link class="gray">/</x-nav-link>
-  </div>
+<form method="get" action="/search">
+  <input type="search" name="q">
+  <button type="submit">search</button>
+</form>
+  <a href="/dashboard">articles</a>
+  <a href="/new">new</a>
+  <a href="/categories">categories</a>
+  <a href="/collections">collections</a>
+  <a href="/tags">tags</a>
+
+@auth
+<form class="col c" method="post" name="logout_form" action="/logout">
+  @csrf
+  <button type="submit">Logout</button>
+</form>
+@endauth
 </nav>
 
-
+<main>
 @guest
-
 <form class="col c" method="post" name="login_form" action="/login">
   @csrf
   <x-input type="email" :value="old('email')"
@@ -36,24 +44,7 @@
 
 @auth
 {{ $slot }}
-
-
-<form class="col c" method="post" name="logout_form" action="/logout">
-  @csrf
-  <button type="submit">Logout</button>
-</form>
 @endauth
-
-<footer class="c">
-  <form class="buttons round c" method="get" name="search_form">
-    <input type="search" name="search" placeholder="search">
-    <button onclick="search_form.submit()"
-      class="gray" title="search"
-      ><span class="hidden">search</span>
-    </button>
-    <x-nav-link class="orange">rss</x-nav-link>
-    </a>
-  </form>
-</footer>
+</main>
 
 </body></html>

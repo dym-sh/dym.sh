@@ -21,20 +21,25 @@ Route::view('/code',     'code');
 Route::view('/notes',    'notes');
 
 
-Route::name('pages.list')->get('/list', function () {
-    return view('list');
+Route::get('/new', function () {
+    return view('new');
 });
-Route::name('admin.new')->get('/new', function () {
-    return view('admin.edit');
-});
-Route::name('admin.edit')->get('/edit', function () {
-    return view('admin.edit');
-});
-Route::name('admin.edit')->get('/edit/{slug}', function ($slug = null) {
-    return view('admin.edit');
+
+Route::get('/edit/{slug}', function (string $slug) {
+    $article = Article::find($slug);
+
+    return view('edit',
+        [ 'article' => $article
+        , 'title' => $article['title']
+        , 'slug' => $article['slug']
+        , 'body' => $article['body']
+        ]);
 })->where('slug', '[A-Za-z0-9-]+');
-Route::name('admin.index')->get('/admin', function () {
-    return view('admin.index');
+
+Route::get('/dashboard', function () {
+    return view('dashboard', [
+        'articles' => Article::all(),
+    ]);
 });
 
 
@@ -45,6 +50,11 @@ Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
 
+Route::get('/search/{search}', function (string $search) {
+    return view('list',
+        [ 'search' => $search ]
+    );
+})->where('search', '.*');
 
 
 Route::get('/{slug}', function (string $slug) {
@@ -57,3 +67,4 @@ Route::get('/{slug}', function (string $slug) {
         , 'body' => $article['body']
         ]);
 })->where('slug', '[A-Za-z0-9-]+');
+

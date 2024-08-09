@@ -1,3 +1,5 @@
+@if( 'hidden' !== $attributes['type'] )
+
 <div class="x-input"
   title="{{ $attributes['title'] ?? $slot }}"
   >
@@ -15,3 +17,5 @@
   <p class="error">{{ $message }}</p>
 @enderror
 </div>
+
+@endif
