@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf8">
 <title>{{ request()->path() }}</title>
-<link rel="stylesheet" type="text/css" href="/css/admin.css">
+<link rel="stylesheet" type="text/css" href="/css/dashboard.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
   <input type="search" name="q">
   <button type="submit">search</button>
 </form>
-  <a href="/dashboard">articles</a>
+  <a href="/articles">articles</a>
   <a href="/new">new</a>
   <a href="/categories">categories</a>
   <a href="/collections">collections</a>

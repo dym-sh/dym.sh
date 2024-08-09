@@ -1,4 +1,4 @@
-<x-layout-admin>
+<x-layout-dashboard>
 
 <ol>
 @foreach($articles as $article)
@@ -6,4 +6,6 @@
 @endforeach
 </ol>
 
-</x-layout-admin>
+// todo other lists; stats
+
+</x-layout-dashboard>

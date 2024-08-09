@@ -1,4 +1,4 @@
-<x-layout-admin>
+<x-layout-dashboard>
 
 <form class="col c w-30" method="post" name="edit_form" action="/edit">
 	@csrf
@@ -13,4 +13,4 @@
   <button type="submit">Save</button>
 </form>
 
-</x-layout-admin>
+</x-layout-dashboard>

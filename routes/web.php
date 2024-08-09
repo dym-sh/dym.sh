@@ -36,8 +36,8 @@ Route::get('/edit/{slug}', function (string $slug) {
         ]);
 })->where('slug', '[A-Za-z0-9-]+');
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
+Route::get('/articles', function () {
+    return view('articles', [
         'articles' => Article::all(),
     ]);
 });

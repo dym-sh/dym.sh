@@ -1,21 +1,47 @@
-@if( 'hidden' !== $attributes['type'] )
-
-<div class="x-input"
-  title="{{ $attributes['title'] ?? $slot }}"
-  >
-  <label
-    for="{{ $slot }}"
-    >{{ $attributes['title'] ?? $slot }}</label>
+@if( 'hidden' === $attributes['type'] )
   <input
-    name="{{ $slot }}"
-    id="{{ $slot }}"
-    placeholder="{{ $attributes['title'] ?? $slot }}"
-    {{ $attributes->merge()->filter(fn ($value, $key) => !in_array($key, ['title'])) }}
-    >
+      name="{{ $slot }}"
+      {{ $attributes->merge() }}
+      >
 
-@error( "$slot" )
-  <p class="error">{{ $message }}</p>
-@enderror
-</div>
+@elseif( 'textarea' == $attributes['type'] )
+
+  <div class="x-input"
+    title="{{ $attributes['title'] ?? $slot }}"
+    >
+    <label
+      for="{{ $slot }}"
+      >{{ $attributes['title'] ?? $slot }}</label>
+    <textarea
+      name="{{ $slot }}"
+      id="{{ $slot }}"
+      placeholder="{{ $attributes['title'] ?? $slot }}"
+      {{ $attributes->merge()->filter(fn ($value, $key) => !in_array($key, ['title','value'])) }}
+      >{{ $attributes['value'] ?? '' }}</textarea>
+
+  @error( "$slot" )
+    <p class="error">{{ $message }}</p>
+  @enderror
+  </div>
+
+@else
+
+  <div class="x-input"
+    title="{{ $attributes['title'] ?? $slot }}"
+    >
+    <label
+      for="{{ $slot }}"
+      >{{ $attributes['title'] ?? $slot }}</label>
+    <input
+      name="{{ $slot }}"
+      id="{{ $slot }}"
+      placeholder="{{ $attributes['title'] ?? $slot }}"
+      {{ $attributes->merge()->filter(fn ($value, $key) => !in_array($key, ['title'])) }}
+      >
+
+  @error( "$slot" )
+    <p class="error">{{ $message }}</p>
+  @enderror
+  </div>
 
 @endif

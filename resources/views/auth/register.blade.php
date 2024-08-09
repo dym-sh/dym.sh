@@ -1,4 +1,7 @@
-<x-layout>
+<x-layout-dashboard>
+
+</x-layout-dashboard>
+
 
 <form class="col c" method="post" name="register_form" action="/register">
   @csrf
@@ -23,5 +26,3 @@
 
   <button type="submit">Register</button>
 </form>
-
-</x-layout>
