@@ -1,10 +1,17 @@
 <?php
 
+use App\Models\Article;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'index');
+Route::get('/', function() {
+    return view('index', [
+        'greeting' => 'Hello',
+        'self' => 'My name is Dym Sohin, im a web-developer',
+        'articles' => Article::all(),
+    ]);
+});
 Route::view('/about', 'about');
 
 Route::view('/graphics', 'graphics');
@@ -23,10 +30,10 @@ Route::name('admin.new')->get('/new', function () {
 Route::name('admin.edit')->get('/edit', function () {
     return view('admin.edit');
 });
-Route::name('admin.edit')->get('/edit/{slug}', function ($name = null) {
+Route::name('admin.edit')->get('/edit/{slug}', function ($slug = null) {
     return view('admin.edit');
 })->where('slug', '[A-Za-z0-9-]+');
-Route::name('admin.index')->get('/admin', function ($name = null) {
+Route::name('admin.index')->get('/admin', function () {
     return view('admin.index');
 });
 
@@ -40,6 +47,13 @@ Route::post('/logout', [SessionController::class, 'destroy']);
 
 
 
-Route::name('page.show')->get('/{slug}', function () {
-    return view('page');
+Route::get('/{slug}', function (string $slug) {
+    $article = Article::find($slug);
+
+    return view('article',
+        [ 'article' => $article
+        , 'title' => $article['title']
+        , 'slug' => $article['slug']
+        , 'body' => $article['body']
+        ]);
 })->where('slug', '[A-Za-z0-9-]+');

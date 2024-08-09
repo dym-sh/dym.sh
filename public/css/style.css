@@ -720,3 +720,39 @@ dfn[title]
 }
 .x-input .error
 { grid-area : error }
+
+ol
+{ gap: 0.5rem
+; flex-direction: column
+}
+ol
+  { counter-reset : ol_lvl_1 }
+ol ol
+  { counter-reset : ol_lvl_2 }
+ol ol ol
+  { counter-reset : ol_lvl_3 }
+
+ol > li::before
+  { content : counter( ol_lvl_1 ) '.'
+  ; counter-increment : ol_lvl_1
+  }
+
+ol > li:has(ol:first-child)::before
+  { display : none }
+ol > li > ol:first-child > li::before
+  { background : var( --bg ) }
+
+ol ol > li::before
+  { content : counter( ol_lvl_1 ) '.' counter( ol_lvl_2 ) '.'
+  ; counter-increment : ol_lvl_2
+  }
+
+ol ol > li:has(ol:first-child)::before
+  { display : none }
+ol ol > li > ol:first-child > li::before
+  { background : var( --bg ) }
+
+ol ol ol > li::before
+  { content : counter( ol_lvl_1 ) '.' counter( ol_lvl_2 ) '.' counter( ol_lvl_3 ) '.'
+  ; counter-increment : ol_lvl_3
+  }

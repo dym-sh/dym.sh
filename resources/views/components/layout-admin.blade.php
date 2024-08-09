@@ -21,9 +21,7 @@
 
 @guest
 
-<a href="/register">Register</a>
-
-<form class="col c" method="post" name="login_form" id="login_form" action="/login">
+<form class="col c" method="post" name="login_form" action="/login">
   @csrf
   <x-input type="email" :value="old('email')"
     title="E-Mail"
@@ -32,6 +30,7 @@
     title="Password"
     required>password</x-input>
   <button type="submit">Login</button>
+  <a href="/register">Register</a>
 </form>
 @endguest
 
@@ -39,7 +38,7 @@
 {{ $slot }}
 
 
-<form class="col c" method="post" name="logout_form" id="logout_form" action="/logout">
+<form class="col c" method="post" name="logout_form" action="/logout">
   @csrf
   <button type="submit">Logout</button>
 </form>

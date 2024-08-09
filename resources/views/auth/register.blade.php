@@ -1,6 +1,6 @@
 <x-layout>
 
-<form class="col c" method="post" name="register_form" id="register_form" action="/register">
+<form class="col c" method="post" name="register_form" action="/register">
   @csrf
 
   <x-input :value="old('fullname')"
