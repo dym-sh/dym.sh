@@ -24,6 +24,21 @@ Route::view('/notes',    'notes');
 Route::get('/new', function () {
     return view('new');
 });
+Route::post('/new', function (string $title = '', string $slug = '', string $body = '') {
+    $article = Article::create(
+        [ 'title' => $title
+        , 'slug' => $slug
+        , 'body' => $body
+        ]);
+
+    return view('edit',
+        [ 'article' => $article
+        , 'title' => $article['title']
+        , 'slug' => $article['slug']
+        , 'body' => $article['body']
+        ]);
+
+});
 
 Route::get('/edit/{slug}', function (string $slug) {
     $article = Article::find($slug);
@@ -35,6 +50,19 @@ Route::get('/edit/{slug}', function (string $slug) {
         , 'body' => $article['body']
         ]);
 })->where('slug', '[A-Za-z0-9-]+');
+
+Route::post('/edit/{id}', function (string $id) {
+    $article = Article::findById($id);
+
+    return view('edit',
+        [ 'article' => $article
+        , 'title' => $article['title']
+        , 'slug' => $article['slug']
+        , 'body' => $article['body']
+        ]);
+})->where('id', '[0-9-]+');
+
+
 
 Route::get('/articles', function () {
     return view('articles', [

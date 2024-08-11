@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('title');
             $table->text('body');
-            $table->integer('category');
+            $table->integer('user_id')->references('id')->on('users');
+            $table->integer('category')->references('id')->on('categories');
             $table->boolean('is_collection');
-            $table->integer('tag_1');
-            $table->integer('tag_2');
-            $table->integer('tag_3');
-            $table->integer('tag_4');
-            $table->integer('tag_5');
+            $table->integer('tag_1')->references('id')->on('tags');
+            $table->integer('tag_2')->references('id')->on('tags');
+            $table->integer('tag_3')->references('id')->on('tags');
+            $table->integer('tag_4')->references('id')->on('tags');
+            $table->integer('tag_5')->references('id')->on('tags');
             $table->timestamps();
         });
     }

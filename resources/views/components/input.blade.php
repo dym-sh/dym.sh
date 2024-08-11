@@ -4,6 +4,17 @@
       {{ $attributes->merge() }}
       >
 
+@elseif( 'checkbox' == $attributes['type'] )
+  <div class="x-input"
+    title="{{ $attributes['title'] ?? $slot }}"
+    >
+    <input type="checkbox" name="{{ $slug }}"
+      {{ $attributes['value'] ? 'checked="checked"' : '' }}
+      >
+    <label for={{ $slug }}></label>
+
+  </div>
+
 @elseif( 'textarea' == $attributes['type'] )
 
   <div class="x-input"
